@@ -1,0 +1,16 @@
+version: "2"
+services:
+  devServer:
+    image: node:7.4.0-alpine
+    user: node
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: development
+      PATH: $PATH:./node_modules/.bin
+      PORT: 30000
+      CONTENT_BASE: "devServer/"
+    command: [npm, run, start]
+    ports:
+      - 30000:30000
