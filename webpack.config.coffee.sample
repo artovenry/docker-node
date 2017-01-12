@@ -1,0 +1,22 @@
+path= require "path"
+port= process.env.PORT
+module.exports=
+  entry:
+    site: [
+      "./src/site.coffee"
+      "webpack-dev-server/client?http://localhost:#{port}"
+    ]
+  output:
+    path: path.resolve __dirname, "bundled"
+    filename: "[name].js"
+    publicPath: "http://devServer:#{port}"
+  devServer:
+    host: "0.0.0.0" #<---IMPORTANT!!
+    port: port
+    contentBase: process.env.CONTENT_BASE
+
+  module:
+    loaders:[
+      {test: /\.coffee$/, loader: "coffee-loader"}
+
+    ]
