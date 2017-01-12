@@ -1,0 +1,15 @@
+version: "2"
+services:
+  node:
+    image: node:7.4.0-alpine
+    user: node
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: development
+      PATH: $PATH:./node_modules/.bin
+    ports:
+      - 8080:8080
+    command: [npm, start]
+
